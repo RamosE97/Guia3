@@ -30,7 +30,7 @@ public class AdaptadorMensaje extends ArrayAdapter<Mensaje> {
 
         // mostrar los datos
         lblMensaje.setText(mensaje.contenido);
-        lblMensaje.setText(mensaje.fecha);
+        lblFecha.setText(mensaje.fecha);
         // Return la convertView ya con los datos
         return convertView;
     }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,19 +24,24 @@ public class MensajeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensaje);
-        btnAdd=findViewById(R.id.btnAgregar);
+        btnAdd=findViewById(R.id.btnEnviar);
         contenido=findViewById(R.id.txtEntrada);
-        /*btnAdd.setOnClickListener(new View.OnClickListener() {
+        mensajeArrayList = new ArrayList<>();
+        //Inicializando el adaptador
+        adaptadorMensaje = new AdaptadorMensaje(this,  mensajeArrayList);
+        ListView listView = (ListView) findViewById(R.id.lstMensaje);
+        listView.setAdapter(adaptadorMensaje);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
                 Date date = new Date();
-                Mensaje m = new Mensaje(contenido.getText().toString(),dateFormat.format(date));
+                Mensaje m = new Mensaje(contenido.getText().toString(), dateFormat.format(date));
                 //TODO agrego a la lista y luego actualizo el adaptador, de lo contrario no se mostraria el cambio
                 mensajeArrayList.add(m);
                 adaptadorMensaje.notifyDataSetChanged();
             }
         });
-        */
+
     }
 }
